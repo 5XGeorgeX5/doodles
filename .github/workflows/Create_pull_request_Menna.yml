@@ -24,3 +24,4 @@ jobs:
           draft: false
           labels: "automated"
           reviewers: "5XGeorgeX5"
+          assignees: "Mennatalla-Khougha"
