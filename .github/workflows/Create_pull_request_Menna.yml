@@ -1,0 +1,26 @@
+name: Create Pull Request on Main for Menna Branch
+
+on:
+ push:
+    branches:
+      - Menna # Replace 'your-branch' with the actual name of your branch
+
+jobs:
+ create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.PAT }}
+          commit-message: "Automated PR: ${{ github.event.head_commit.message }}"
+          title: "Automated PR: ${{ github.event.head_commit.message }}"
+          body: "This is an automated pull request created by GitHub Actions."
+          branch: ${{ github.ref }}
+          base: "main" # This indicates that the pull request should merge changes into the 'main' branch
+          draft: false
+          labels: "automated"
+          reviewers: "5XGeorgeX5"
