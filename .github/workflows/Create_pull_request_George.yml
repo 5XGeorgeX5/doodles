@@ -15,7 +15,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GEORGE_PAT }}
           commit-message: "Automated PR: ${{ github.event.head_commit.message }}"
           title: "Automated PR: ${{ github.event.head_commit.message }}"
           body: "This is an automated pull request created by GitHub Actions."
