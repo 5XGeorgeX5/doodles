@@ -74,3 +74,14 @@
     @apply bg-background text-foreground;
   }
 }
+
+.main-background {
+  background-image: url('/BackGround2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card-size {
+  flex: 0 0 50%;
+}
