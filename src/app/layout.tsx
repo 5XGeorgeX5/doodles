@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Caveat_Brush } from "next/font/google";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { auth, signOut } from "@/auth";
+import { Button } from "@/components/ui/button";
 
 const caveat = Caveat_Brush({
   subsets: ["latin"],
@@ -18,8 +20,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  showUser = true,
 }: Readonly<{
   children: React.ReactNode;
+  showUser?: boolean;
 }>) {
   return (
     <html lang="en">
@@ -30,13 +34,28 @@ export default function RootLayout({
           >
             Doodles
           </h1>
-          <img
-            src="https://placehold.co/400x400"
-            alt="Placeholder image"
-            className="rounded-full w-20 h-20"
-          />
+          {showUser && (
+            <div className="flex items-center gap-x-4">
+              <form
+                action={async () => {
+                  "use server";
+
+                  await signOut();
+                }}
+              >
+                <Button type="submit">Sign out</Button>
+              </form>
+              <img
+                src="https://placehold.co/400x400"
+                alt="Placeholder image"
+                className="rounded-full w-20 h-20"
+              />
+            </div>
+          )}
         </header>
-        <main className="main-background flex-grow min-h-screen">{children}</main>
+        <main className="main-background flex-grow min-h-screen">
+          {children}
+        </main>
       </body>
     </html>
   );
