@@ -16,13 +16,11 @@ import {
   FormMessage,
 } from "../ui/form";
 import { FormError } from "../form-error";
-import { FormSuccess } from "../form-success";
 import { register } from "@/actions/register";
 import { useState, useTransition } from "react";
 
 export const RegisterForm = () => {
   const [error, setError] = useState<string | undefined>("");
-  const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
@@ -35,11 +33,11 @@ export const RegisterForm = () => {
 
   function onSubmit(values: z.infer<typeof RegisterSchema>) {
     setError("");
-    setSuccess("");
     startTransition(() => {
       register(values).then((data) => {
-        setError(data.error);
-        setSuccess(data.success);
+        if (data !== undefined) {
+          setError(data.error);
+        }
       });
     });
   }
@@ -108,7 +106,6 @@ export const RegisterForm = () => {
             />
           </div>
           <FormError message={error} />
-          <FormSuccess message={success} />
           <Button disabled={isPending} type="submit" className="w-full">
             Register
           </Button>
