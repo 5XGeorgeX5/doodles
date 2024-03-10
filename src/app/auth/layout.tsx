@@ -1,4 +1,4 @@
-import RootLayout from "../layout";
+import { Body } from "@/components/body";
 
 export default function AuthLayout({
   children,
@@ -6,8 +6,8 @@ export default function AuthLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <RootLayout showUser={false}>
+      <Body showUser={false}>
       <div className="h-full flex items-center justify-center">{children}</div>
-    </RootLayout>
+      </Body>
   );
 }
