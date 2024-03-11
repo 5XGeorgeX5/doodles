@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,9 +7,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { signOut } from "@/auth";
+import { logout } from "@/actions/logout";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 export default function ImgDropDown() {
   const router = useRouter();
@@ -18,16 +17,17 @@ export default function ImgDropDown() {
     // await signOut({redirect: true, callbackUrl: '/auth/login'});
     // await signOut({ redirect: true, redirectTo: '/auth/login' });
     // await signOut();
-    router.push("/auth/login");
+    // router.push("/auth/login");
+    logout();
   };
 
   // useEffect (() => {
   //   handleLogOut()
   // }, [])
-    
-    const handleProfile = () => {
-      router.push("/profile");
-    };
+
+  const handleProfile = () => {
+    router.push("/profile");
+  };
 
   return (
     <DropdownMenu>
@@ -39,12 +39,8 @@ export default function ImgDropDown() {
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-              <DropdownMenuItem onSelect={handleProfile}>
-                  Profile
-              </DropdownMenuItem>
-              <DropdownMenuItem onSelect={handleLogOut}>
-                  Log Out
-              </DropdownMenuItem>
+        <DropdownMenuItem onClick={handleProfile}>Profile</DropdownMenuItem>
+        <DropdownMenuItem onClick={handleLogOut}>Log Out</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
