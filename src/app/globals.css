@@ -83,11 +83,11 @@ body,
 
 .main-background {
   background-image: url('/BackGround3.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* background-size: cover; */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
 }
 
 .card-size {
-  flex: 0 0 50%;
+  flex: 0 70%;
 }

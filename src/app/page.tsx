@@ -13,8 +13,10 @@ import { Body } from "@/components/body";
 export default function Home() {
   return (
     <Body showUser={true}>
-      <div className="flex min-w-full justify-center space-x-24">
-        <nav className="flex-none">Filters</nav>
+      <div className="flex min-w-full justify-around">
+        <div className="flex flex-col justify-center">
+          <nav className="flex-none">Filters</nav>
+        </div>
         <Card className="flex-grow card-size">
           <CardHeader>
             <CardTitle>Card Title</CardTitle>
@@ -27,9 +29,11 @@ export default function Home() {
             <p>Card Footer</p>
           </CardFooter>
         </Card>
-        <Button variant="outline" className="flex-none">
-          Button
-        </Button>
+        {/* <div>
+          <Button variant="outline" className="flex-none">
+            Button
+          </Button>
+        </div> */}
       </div>
     </Body>
   );
