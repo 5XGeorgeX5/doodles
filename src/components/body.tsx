@@ -29,14 +29,14 @@ export const Body = ({ children, showUser }: BodyProps) => {
     <body className={`${inter.className} flex flex-col min-h-screen `}>
       <header className="text-3xl
        font-bold
-       bg-pink-100
+       bg-orange-100
         space-x-4
         flex
         justify-between
         align-baseline
          w-full p-5
          border-b-4
-         border-pink-300" >
+         border-orange-300" >
         <Link href="/">
           <h1
             className={`bg-gradient-to-r
