@@ -26,16 +26,34 @@ export default function ImgDropDown() {
     router.push("/upload");
   };
 
-
   return (
-    <div className="flex gap-2 justify-center space-x-6 items-center">
-      <Button onClick={handleAddPic} className="bg-pink-700 text-yellow-100">New Doodle</Button>
+    <div className="flex justify-between space-x-6 items-center">
+      <Button
+        onClick={handleAddPic}
+        variant={"outline"}
+        className="bg-pink-700
+         text-yellow-100
+          hover:bg-pink-600 
+          click:bg-pink-900
+          focus:bg-pink-900
+          rounded-full
+          w-10 h-10
+          sm:rounded-lg
+          sm:min-w-max
+          "
+      >
+        <span className="hidden sm:block">New Doodle</span>
+        <span className="sm:hidden text-lg">+</span>
+      </Button>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <img
             src="https://placehold.co/400x400"
             alt="Placeholder image"
-            className="rounded-full w-20 h-20 cursor-pointer"
+            className="rounded-full
+            cursor-pointer
+            w-12 h-12
+            sm:w-20 sm:h-20"
           />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
