@@ -4,7 +4,7 @@ import { CardWrapper } from "./card-wrapper";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { RegisterSchema } from "@/shemas";
+import { RegisterSchema } from "@/schemas";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import {
@@ -62,6 +62,32 @@ export const RegisterForm = () => {
                       {...field}
                       disabled={isPending}
                       placeholder="John Doe"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="birthDay"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Birth day</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      disabled={isPending}
+                      placeholder="birth day"
+                      type="date"
+                      value={
+                        field.value
+                          ? field.value.toISOString().slice(0, 10)
+                          : ""
+                      }
+                      onChange={(event) =>
+                        field.onChange(new Date(event.target.value))
+                      }
                     />
                   </FormControl>
                   <FormMessage />
