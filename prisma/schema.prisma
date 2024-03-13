@@ -20,6 +20,7 @@ model User {
   emailVerified DateTime?
   image         String?
   password      String?
+  birthDay      DateTime?
   accounts      Account[]
 }
 
