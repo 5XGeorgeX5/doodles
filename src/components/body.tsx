@@ -27,17 +27,34 @@ export const Body = ({ children, showUser }: BodyProps) => {
   }
   return (
     <body className={`${inter.className} flex flex-col min-h-screen `}>
-      <header className="text-3xl font-bold bg-pink-100 space-x-4 flex justify-between align-baseline w-full p-5 border-b-4 border-pink-300" >
+      <header className="text-3xl
+       font-bold
+       bg-pink-100
+        space-x-4
+        flex
+        justify-between
+        align-baseline
+         w-full p-5
+         border-b-4
+         border-pink-300" >
         <Link href="/">
           <h1
-            className={`bg-gradient-to-r from-blue-600 via-red-400 to-green-600 inline-block text-transparent bg-clip-text text-6xl m-3 ${caveat.className}`}
+            className={`bg-gradient-to-r
+             from-blue-600 via-red-400 to-green-600
+             inline-block
+             text-transparent
+             bg-clip-text
+             text-4xl
+             sm:text-6xl
+             m-3
+             ${caveat.className}`}
           >
             Doodles
           </h1>
         </Link>
         {showUser && <ImgDropDown />}
       </header>
-      <main className="main-background bg-center bg-cover bg-no-repeat h-full pt-9">{children}</main>
+      <main className="main-background bg-center bg-cover bg-no-repeat h-full w-full pt-9">{children}</main>
     </body>
   );
 };

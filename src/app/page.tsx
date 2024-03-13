@@ -13,27 +13,48 @@ import { Body } from "@/components/body";
 export default function Home() {
   return (
     <Body showUser={true}>
-      <div className="flex min-w-full justify-around">
-        <div className="flex flex-col justify-center">
+      <div className="flex flex-col w-3/4 mx-auto space-y-4">
+        <div className="flex justify-center">
           <nav className="flex-none">Filters</nav>
         </div>
-        <Card className="flex-grow card-size">
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
-          </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
-        </Card>
-        {/* <div>
-          <Button variant="outline" className="flex-none">
-            Button
-          </Button>
-        </div> */}
+        <div className="flex justify-between">
+          <Card>
+            <CardHeader>
+              <CardTitle>Card Title</CardTitle>
+              <CardDescription>Card Description</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p>Card Content</p>
+            </CardContent>
+            <CardFooter>
+              <p>Card Footer</p>
+            </CardFooter>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Card Title</CardTitle>
+              <CardDescription>Card Description</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p>Card Content</p>
+            </CardContent>
+            <CardFooter>
+              <p>Card Footer</p>
+            </CardFooter>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Card Title</CardTitle>
+              <CardDescription>Card Description</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p>Card Content</p>
+            </CardContent>
+            <CardFooter>
+              <p>Card Footer</p>
+            </CardFooter>
+          </Card>
+        </div>
       </div>
     </Body>
   );
