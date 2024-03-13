@@ -17,41 +17,57 @@ export default function Home() {
         <div className="flex justify-center">
           <nav className="flex-none">Filters</nav>
         </div>
-        <div className="flex justify-between">
+        <div className="flex 
+        justify-between
+        space-x-4
+        p-4
+        bg-orange-200">
           <Card>
             <CardHeader>
-              <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardTitle>Title</CardTitle>
+              <CardDescription>Description</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+            <img
+            src="https://placehold.co/600x400"
+            alt="Placeholder image"
+            className="rounded-md"
+          />
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <p>Ratings</p>
             </CardFooter>
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardTitle>Title</CardTitle>
+              <CardDescription>Description</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+            <img
+            src="https://placehold.co/600x400"
+            alt="Placeholder image"
+            className="rounded-md"
+          />
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <p>Ratings</p>
             </CardFooter>
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardTitle>Title</CardTitle>
+              <CardDescription>Description</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+            <img
+            src="https://placehold.co/600x400"
+            alt="Placeholder image"
+            className="rounded-md"
+          />
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <p>Ratings</p>
             </CardFooter>
           </Card>
         </div>
