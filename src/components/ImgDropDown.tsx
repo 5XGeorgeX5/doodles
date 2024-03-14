@@ -27,7 +27,7 @@ export default function ImgDropDown() {
   };
 
   return (
-    <div className="flex justify-between space-x-6 items-center">
+    <div className="flex justify-between space-x-12 items-center px-8">
       <Button
         onClick={handleAddPic}
         variant={"outline"}
@@ -51,8 +51,8 @@ export default function ImgDropDown() {
             alt="Placeholder image"
             className="rounded-full
             cursor-pointer
-            w-12 h-12
-            sm:w-20 sm:h-20"
+            w-12 h-12 mr-6
+            sm:w-16 sm:h-16"
           />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
