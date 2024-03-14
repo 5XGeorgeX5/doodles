@@ -1,5 +1,8 @@
-"use client"
-import React, { ChangeEvent, useState } from 'react';
+// "use client"
+// import React, { ChangeEvent, useState } from 'react';
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+
 
 interface FilterComponentProps {
  onFilterChange: (filter: 'trending' | 'newest') => void;
@@ -7,38 +10,29 @@ interface FilterComponentProps {
 
 // export default function FilterComponent({ onFilterChange }: FilterComponentProps) {
 export default function FilterComponent() {
- const [filter, setFilter] = useState<'trending' | 'newest'>('trending');
+//  const [filter, setFilter] = useState<'trending' | 'newest'>('trending');
 
-    const handleFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
-     const newFilter = e.target.value as 'trending' | 'newest';
-    setFilter(newFilter);
-    // onFilterChange(newFilter);
- };
+//     const handleFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
+//      const newFilter = e.target.value as 'trending' | 'newest';
+//     setFilter(newFilter);
+//     onFilterChange(newFilter);
+//  };
 
  return (
-    <div className="flex justify-center space-x-4">
-      <label className="inline-flex items-center">
-        <input
-          type="radio"
-          className={`form-radio ${filter === 'trending' ? 'text-orange-600' : 'text-blue-600'}`}
-          name="filter"
-          value="trending"
-          checked={filter === 'trending'}
-          onChange={handleFilterChange}
-        />
-        <span className="ml-2 text-gray-700">Trending</span>
-      </label>
-      <label className="inline-flex items-center">
-        <input
-          type="radio"
-          className={`form-radio ${filter === 'newest' ? 'text-orange-600' : 'text-blue-600'}`}
-          name="filter"
-          value="newest"
-          checked={filter === 'newest'}
-          onChange={handleFilterChange}
-        />
-        <span className="ml-2 text-gray-700">Newest</span>
-      </label>
+  <nav className="flex space-x-8">
+  <h2 className="text-xl font-bold">Filters: </h2>
+  <RadioGroup defaultValue="trending" className="flex space-x-4">
+    <div className="flex items-center space-x-2">
+      <RadioGroupItem value="trending"
+        id="trending" />
+      <Label htmlFor="trending">Trending</Label>
     </div>
+    <div className="flex items-center space-x-2">
+      <RadioGroupItem value="newest"
+        id="newest"/>
+      <Label htmlFor="newest">Newest</Label>
+    </div>
+  </RadioGroup>
+</nav>
  );
 };
