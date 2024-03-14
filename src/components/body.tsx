@@ -1,12 +1,8 @@
 // "use client"
-import { signOut } from "@/auth";
-import { Button } from "@/components/ui/button";
 import { Caveat_Brush } from "next/font/google";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import ImgDropDown from "@/components/ImgDropDown";
-// import React, { useState } from 'react';
-// import { useRouter } from 'next/navigation'
 
 const caveat = Caveat_Brush({
   subsets: ["latin"],
@@ -26,16 +22,19 @@ export const Body = ({ children, showUser }: BodyProps) => {
     
   }
   return (
-    <body className={`${inter.className} flex flex-col min-h-screen `}>
-      <header className="text-3xl
-       font-bold
+    <body 
+      className={`${inter.className} 
+      flex
+      flex-col
+`}>
+      <header className="font-bold
        bg-orange-100
         space-x-4
         flex
         justify-between
-        align-baseline
-         w-full p-5
+         w-full
          border-b-4
+         fixed top-0 left-0 z-50
          border-orange-300" >
         <Link href="/">
           <h1
@@ -54,7 +53,22 @@ export const Body = ({ children, showUser }: BodyProps) => {
         </Link>
         {showUser && <ImgDropDown />}
       </header>
-      <main className="main-background bg-center bg-cover bg-no-repeat h-full w-full pt-9">{children}</main>
+      <main style={{ backgroundImage: "url('/BackGround3.png')" }}
+        className="overflow-y-auto
+        min-h-screen
+        bg-center
+        bg-cover
+        bg-no-repeat
+        h-full w-full
+        fixed
+        z-0
+        inset
+        pb-5
+        pt-24
+        sm:pt-28"
+      >
+        {children}
+      </main>
     </body>
   );
 };
