@@ -8,7 +8,7 @@ export const LoginSchema = z.object({
 const maxDate = new Date();
 maxDate.setFullYear(maxDate.getFullYear() - 3);
 const minDate = new Date();
-minDate.setFullYear(minDate.getFullYear() - 80);
+minDate.setFullYear(minDate.getFullYear() - 100);
 
 export const RegisterSchema = z.object({
   email: z.string().email(),
@@ -19,5 +19,5 @@ export const RegisterSchema = z.object({
   birthDay : z
     .date()
     .max(maxDate, { message: "user can't be younger than 3 years" })
-    .min(minDate, { message: "please enter a valid date" }),
+    .min(minDate, { message: "please enter a valid date" }).optional(),
 });
