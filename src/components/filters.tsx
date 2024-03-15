@@ -19,7 +19,7 @@ export default function FilterComponent() {
 //  };
 
  return (
-  <nav className="flex space-x-8">
+  <nav className="flex flex-col items-center space-y-4">
   <h2 className="text-xl font-bold">Filters: </h2>
   <RadioGroup defaultValue="trending" className="flex space-x-4">
     <div className="flex items-center space-x-2">

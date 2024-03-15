@@ -54,10 +54,10 @@ export default function ImgDropDown() {
       <Button
         onClick={handleAddPic}
         variant={"outline"}
-        className="bg-orange-700
+        className="bg-orange-600
          text-yellow-100
           focus:bg-orange-800
-          hover:bg-orange-500
+          hover:bg-orange-400
           rounded-full
           w-10 h-10
           sm:rounded-lg
