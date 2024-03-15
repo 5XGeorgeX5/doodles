@@ -13,7 +13,4 @@ export const uploadProfilePic = async (public_id: string) => {
       image: public_id,
     },
   });
-  if (session.user.image) {
-    session.user.image = public_id;
-  }
 };
