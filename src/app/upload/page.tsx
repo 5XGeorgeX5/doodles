@@ -18,7 +18,7 @@ export default function Profile() {
 	const [description, setDescription] = useState('');
 	return (
 		<Body showUser={true}>
-			<div className="w-3/4 mx-auto">
+			<div className="w-1/4 mx-auto mt-8">
 				<Card className='space-y-4 py-4'>
 					<CardHeader className='flex flex-col mx-auto justify-center items-center space-y-4 min-w-full'>
 						<CardTitle >
