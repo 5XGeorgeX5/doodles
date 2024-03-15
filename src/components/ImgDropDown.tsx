@@ -11,11 +11,8 @@ import { logout } from "@/actions/logout";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 import { CldImage } from "next-cloudinary";
-import { useState } from "react";
-import { getUserImage } from "@/actions/getuserinfo";
-import { useSession } from "next-auth/react";
-import { auth } from "@/auth";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { getUserInfo } from "@/actions/getuserinfo";
 
 export default function ImgDropDown() {
   const [profilePic, setProfilePic] = useState("profilepic");
@@ -25,9 +22,11 @@ export default function ImgDropDown() {
       if (storedProfilePic) {
         setProfilePic(storedProfilePic);
       } else {
-        const image = await getUserImage();
-        sessionStorage.setItem("image", image);
-        setProfilePic(image);
+        const user = await getUserInfo();
+        sessionStorage.setItem("image", user.image);
+        sessionStorage.setItem("name", user.name);
+        sessionStorage.setItem("age", user.age);
+        setProfilePic(user.image);
       }
     };
 
@@ -38,6 +37,8 @@ export default function ImgDropDown() {
 
   const handleLogOut = async () => {
     sessionStorage.removeItem("image");
+    sessionStorage.removeItem("name");
+    sessionStorage.removeItem("age");
     logout();
   };
 
