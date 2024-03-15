@@ -22,3 +22,19 @@ export async function getUserById(id: string) {
     return null;
   }
 }
+
+export function getUserAge(birthDay: Date | null | undefined) {
+  if (!birthDay) {
+    return "";
+  }
+  const now = new Date();
+  let yearDiff = now.getFullYear() - birthDay.getFullYear();
+  var monthDiff = now.getMonth() - birthDay.getMonth();
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && birthDay.getDate() > now.getDate())
+  ) {
+    yearDiff--;
+  }
+  return yearDiff.toString();
+}
