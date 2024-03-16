@@ -13,6 +13,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Drawing {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String  @db.ObjectId
+  title       String?
+  description String?
+  image       String  @unique
+  numRatings  Int     @default(0)
+  sumRatings  Int     @default(0)
+}
+
 model User {
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
