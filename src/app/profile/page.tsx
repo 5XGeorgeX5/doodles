@@ -36,7 +36,11 @@ export default function Profile() {
             {userAge && <p>{userAge} years old</p>}
             <div className="flex justify-center">
               <CldUploadWidget
-                options={{ sources: ["local", "camera"] }}
+                options={{
+                  sources: ["local", "camera"],
+                  multiple: false,
+                  singleUploadAutoClose: false,
+                }}
                 uploadPreset="next_cloudinary_app"
                 onSuccess={(results) => {
                   if (results.info && typeof results.info !== "string") {
