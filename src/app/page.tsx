@@ -5,20 +5,21 @@ import FilterComponent from "@/components/filters";
 export default function Home() {
   return (
     <Body showUser={true}>
-      <div className="flex flex-col w-3/4 mx-auto space-y-4">
+      <div className="mx-auto flex w-3/4 flex-col space-y-4">
         <div className="flex justify-center">
           <FilterComponent />
         </div>
-        <div className="grid 
-        grid-cols-1 
-        md:grid-cols-2 
+        <div
+          className="relative 
+        grid 
+        min-h-screen 
 
-        2xl:grid-cols-3
+        grid-cols-1
         gap-4
-        p-4
         bg-orange-200
-        relative
-        min-h-screen
+        p-4
+        md:grid-cols-2
+        2xl:grid-cols-3
         "
         >
           <HomePageCards />

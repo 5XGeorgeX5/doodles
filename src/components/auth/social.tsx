@@ -7,7 +7,7 @@ import { signIn } from "next-auth/react";
 
 export const Social = () => {
   return (
-    <div className="flex items-center gap-x-2 w-full">
+    <div className="flex w-full items-center gap-x-2">
       <Button
         size="lg"
         variant="outline"

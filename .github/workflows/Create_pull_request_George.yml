@@ -1,12 +1,12 @@
 name: Create Pull Request on Main for George Branch
 
 on:
- push:
+  push:
     branches:
       - George # Replace 'your-branch' with the actual name of your branch
 
 jobs:
- create-pull-request:
+  create-pull-request:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

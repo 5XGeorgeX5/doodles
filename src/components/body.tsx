@@ -18,34 +18,35 @@ interface BodyProps {
 }
 
 export const Body = ({ children, showUser }: BodyProps) => {
-  const handleNewDoodle = () => {
-    
-  }
+  const handleNewDoodle = () => {};
   return (
-    <body 
+    <body
       className={`${inter.className} 
       flex
       flex-col
-`}>
-      <header className="font-bold
-       bg-orange-100
-        space-x-4
+`}
+    >
+      <header
+        className="fixed
+       left-0
+        top-0
+        z-50
         flex
+        w-full
         justify-between
-         w-full
-         border-b-4
-         fixed top-0 left-0 z-50
-         border-orange-300" >
+        space-x-4 border-b-4 border-orange-300 bg-orange-100
+      font-bold"
+      >
         <Link href="/">
           <h1
-            className={`bg-gradient-to-r
-             from-blue-600 via-red-400 to-green-600
-             inline-block
-             text-transparent
+            className={`m-3
+             inline-block bg-gradient-to-r from-blue-600
+             via-red-400
+             to-green-600
              bg-clip-text
              text-4xl
+             text-transparent
              sm:text-6xl
-             m-3
              ${caveat.className}`}
           >
             Doodles
@@ -53,16 +54,17 @@ export const Body = ({ children, showUser }: BodyProps) => {
         </Link>
         {showUser && <ImgDropDown />}
       </header>
-      <main style={{ backgroundImage: "url('/BackGround3.png')" }}
-        className="overflow-y-auto
-        min-h-screen
-        bg-center
-        bg-cover
-        bg-no-repeat
-        h-full w-full
+      <main
+        style={{ backgroundImage: "url('/BackGround3.png')" }}
+        className="inset
         fixed
         z-0
-        inset
+        h-full
+        min-h-screen
+        w-full overflow-y-auto
+        bg-cover
+        bg-center
+        bg-no-repeat
         pb-5
         pt-24
         sm:pt-28"
