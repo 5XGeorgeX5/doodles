@@ -20,7 +20,7 @@ export default {
           if (!user || !user.password) return null;
           const isValidPassword = await bcryrpt.compare(
             password,
-            user.password
+            user.password,
           );
           if (isValidPassword) {
             return user;

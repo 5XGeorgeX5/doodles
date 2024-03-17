@@ -25,7 +25,7 @@ export const uploadDoodle = async (values: z.infer<typeof UploadSchema>) => {
         image,
       },
     });
-    return {success: "Doodle was uploaded successfully!"}
+    return { success: "Doodle was uploaded successfully!" };
   } catch (error) {
     return { error: "Something went wrong!" };
   }

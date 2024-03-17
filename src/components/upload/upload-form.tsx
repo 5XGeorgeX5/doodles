@@ -50,7 +50,7 @@ export const UploadForm = () => {
     });
   }
   return (
-    <div className="w-1/4 mx-auto mt-8">
+    <div className="mx-auto mt-8 w-1/4">
       <Card className="py-4 shadow-md">
         <CardContent>
           <Form {...form}>
@@ -61,7 +61,7 @@ export const UploadForm = () => {
                   name="title"
                   render={({ field }) => (
                     <FormItem>
-                      <FormControl className="border-0 border-b-4 shadow-none text-lg">
+                      <FormControl className="border-0 border-b-4 text-lg shadow-none">
                         <Input
                           {...field}
                           disabled={isPending}
@@ -77,10 +77,10 @@ export const UploadForm = () => {
                   name="description"
                   render={({ field }) => (
                     <FormItem>
-                      <FormControl className="border-0 border-b-4 shadow-none text-lg">
+                      <FormControl className="border-0 border-b-4 text-lg shadow-none">
                         <Textarea
                           placeholder="Description"
-                          className="resize-none border-b-4 h-36"
+                          className="h-36 resize-none border-b-4"
                           {...field}
                           disabled={isPending}
                         />
@@ -96,7 +96,7 @@ export const UploadForm = () => {
                       height="200"
                       src={image}
                       alt="doodle"
-                      className="w-[400px] h-[200px]"
+                      className="h-[200px] w-[400px]"
                     />
                   </div>
                 )}
@@ -130,10 +130,10 @@ export const UploadForm = () => {
                                 <Button
                                   type="button"
                                   onClick={() => open()}
-                                  className="bg-orange-600
+                                  className="
+                              bg-orange-600
                               text-yellow-100
-                              focus:bg-orange-800
-                              hover:bg-orange-400"
+                              hover:bg-orange-400 focus:bg-orange-800"
                                 >
                                   Uplaod new doodle
                                 </Button>
@@ -148,7 +148,7 @@ export const UploadForm = () => {
                 />
               </div>
               <FormError message={error} />
-              <FormSuccess message={success}/>
+              <FormSuccess message={success} />
               <Button disabled={isPending} type="submit" className="w-full">
                 Submit
               </Button>

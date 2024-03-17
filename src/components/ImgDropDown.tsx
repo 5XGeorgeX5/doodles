@@ -51,22 +51,22 @@ export default function ImgDropDown() {
   };
 
   return (
-    <div className="flex justify-between space-x-12 items-center px-8">
+    <div className="flex items-center justify-between space-x-12 px-8">
       <Button
         onClick={handleAddPic}
         variant={"outline"}
-        className="bg-orange-600
-         text-yellow-100
-          focus:bg-orange-800
-          hover:bg-orange-400
+        className="h-10
+         w-10
           rounded-full
-          w-10 h-10
-          sm:rounded-lg
+          bg-orange-600
+          text-yellow-100
+          hover:bg-orange-400 focus:bg-orange-800
           sm:min-w-max
+          sm:rounded-lg
           "
       >
         <span className="hidden sm:block">New Doodle</span>
-        <span className="sm:hidden text-lg">+</span>
+        <span className="text-lg sm:hidden">+</span>
       </Button>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -75,10 +75,10 @@ export default function ImgDropDown() {
               <img
                 src={profilePic}
                 alt="Placeholder image"
-                className="rounded-full
-                  cursor-pointer
-                  w-12 h-12
-                  sm:w-16 sm:h-16"
+                className="h-12
+                  w-12
+                  cursor-pointer rounded-full
+                  sm:h-16 sm:w-16"
               />
             ) : (
               <CldImage
@@ -86,9 +86,9 @@ export default function ImgDropDown() {
                 height="48"
                 src={profilePic}
                 alt="Profile Image"
-                className="rounded-full
-                  cursor-pointer
-                  sm:w-16 sm:h-16"
+                className="cursor-pointer
+                  rounded-full
+                  sm:h-16 sm:w-16"
               />
             )}
           </div>

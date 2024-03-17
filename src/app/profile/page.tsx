@@ -23,14 +23,14 @@ export default function Profile() {
   }, []);
   return (
     <Body showUser={true}>
-      <div className="flex mx-auto space-x-8 sm:w-3/4">
-        <div className="flex flex-col w-full mx-auto space-y-4">
-          <div className="flex flex-col space-y-4 items-center">
+      <div className="mx-auto flex space-x-8 sm:w-3/4">
+        <div className="mx-auto flex w-full flex-col space-y-4">
+          <div className="flex flex-col items-center space-y-4">
             <h1 className="text-2xl font-semibold">Profile</h1>
             <img
               src="https://placehold.co/400x400"
               alt="Placeholder image"
-              className="rounded-full w-24 h-24 sm:w-36 sm:h-36"
+              className="h-24 w-24 rounded-full sm:h-36 sm:w-36"
             />
             <h2>{userName}</h2>
             {userAge && <p>{userAge} years old</p>}
@@ -58,8 +58,8 @@ export default function Profile() {
                       onClick={() => open()}
                       className="bg-orange-600
                   text-yellow-100
-                  focus:bg-orange-800
-                  hover:bg-orange-400"
+                  hover:bg-orange-400
+                  focus:bg-orange-800"
                     >
                       New Profile Pic
                     </Button>
@@ -72,13 +72,13 @@ export default function Profile() {
             <FilterComponent />
           </div>
           <div
-            className="grid 
-              grid-cols-1 
-              lg:grid-cols-2 
+            className="relative 
+              grid 
+              min-h-screen 
+              grid-cols-1
               gap-4
               p-4
-              relative
-              min-h-screen
+              lg:grid-cols-2
               "
           >
             <HomePageCards />
