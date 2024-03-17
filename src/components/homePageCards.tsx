@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   Card,
@@ -7,23 +8,38 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { CldImage } from "next-cloudinary";
 
-export const HomePageCards = () => {
+interface HomePageCardsProps {
+  title: string;
+  description: string;
+  image: string;
+  rating: number;
+}
+
+export const HomePageCards = ({
+  title,
+  description,
+  image,
+  rating,
+}: HomePageCardsProps) => {
   return (
-    <Card>
+    <Card className="h-fit">
       <CardHeader>
-        <CardTitle>Title</CardTitle>
-        <CardDescription>Description</CardDescription>
+        <CardTitle>{title}</CardTitle>
+        {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
       <CardContent>
-        <img
-          src="https://placehold.co/600x400"
-          alt="Placeholder image"
-          className="h-full w-full rounded-md"
+        <CldImage
+          width="600"
+          height="400"
+          src={image}
+          alt="Doodle"
+          className="w-full rounded-md"
         />
       </CardContent>
       <CardFooter>
-        <p>Ratings</p>
+        <p>Rating: {rating}</p>
       </CardFooter>
     </Card>
   );

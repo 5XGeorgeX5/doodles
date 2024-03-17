@@ -1,8 +1,11 @@
 import { HomePageCards } from "@/components/homePageCards";
 import { Body } from "@/components/body";
 import FilterComponent from "@/components/filters";
+import { getAllDrawings } from "@/data/drawing";
 
-export default function Home() {
+export default async function Home() {
+  const drawings = await getAllDrawings();
+  console.log(drawings);
   return (
     <Body showUser={true}>
       <div className="mx-auto flex w-3/4 flex-col space-y-4">
@@ -22,10 +25,19 @@ export default function Home() {
         2xl:grid-cols-3
         "
         >
-          <HomePageCards />
-          <HomePageCards />
-          <HomePageCards />
-          <HomePageCards />
+          {drawings?.map((drawing) => (
+            <HomePageCards
+              key={drawing.id}
+              title={drawing.title}
+              description={drawing.description || ""}
+              image={drawing.image}
+              rating={
+                drawing.numRatings > 0
+                  ? drawing.sumRatings / drawing.numRatings
+                  : 0
+              }
+            />
+          ))}
         </div>
       </div>
     </Body>
