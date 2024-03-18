@@ -29,18 +29,18 @@ export const HomePageCards = ({
 }: HomePageCardsProps) => {
   return (
     <Card className="h-fit">
-      <CardHeader>
-        <div>
+      <CardHeader className="space-y-4">
+        <div className="flex space-x-4 items-center">
           <CldImage
-            width="70"
-            height="70"
+            width="50"
+            height="50"
             src={profilePic}
             alt="profile picture"
             className="rounded-full"
-          />
-          <CardTitle>{userName}</CardTitle>
-        </div>
-        <CardTitle>{title}</CardTitle>
+            />
+          <h2 className="font-bold text-md">{userName}</h2>
+          </div>
+            <CardTitle className="text-xl capitalize">{title}</CardTitle>
         {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
       <CardContent>
