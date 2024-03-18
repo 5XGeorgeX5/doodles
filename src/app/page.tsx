@@ -29,6 +29,7 @@ export default async function Home() {
             <HomePageCards
               key={drawing.id}
               userName={drawing.user.name || "guest"}
+              userId={drawing.user.id}
               profilePic={drawing.user.image || "profilepic"}
               title={drawing.title}
               description={drawing.description || ""}

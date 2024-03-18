@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { CldImage } from "next-cloudinary";
+import Link from "next/link";
 
 interface HomePageCardsProps {
   title: string;
@@ -17,6 +18,7 @@ interface HomePageCardsProps {
   rating: number;
   profilePic: string;
   userName: string;
+  userId: string;
 }
 
 export const HomePageCards = ({
@@ -26,21 +28,24 @@ export const HomePageCards = ({
   rating,
   profilePic,
   userName,
+  userId,
 }: HomePageCardsProps) => {
   return (
     <Card className="h-fit">
       <CardHeader className="space-y-4">
-        <div className="flex space-x-4 items-center">
-          <CldImage
-            width="50"
-            height="50"
-            src={profilePic}
-            alt="profile picture"
-            className="rounded-full"
+        <Link href={`/profile/${userId}`}>
+          <div className="flex w-fit items-center space-x-4">
+            <CldImage
+              width="50"
+              height="50"
+              src={profilePic}
+              alt="profile picture"
+              className="rounded-full"
             />
-          <h2 className="font-bold text-md">{userName}</h2>
+            <h2 className="text-md font-bold">{userName}</h2>
           </div>
-            <CardTitle className="text-xl capitalize">{title}</CardTitle>
+        </Link>
+        <CardTitle className="text-xl capitalize">{title}</CardTitle>
         {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
       <CardContent>
