@@ -15,6 +15,8 @@ interface HomePageCardsProps {
   description: string;
   image: string;
   rating: number;
+  profilePic: string;
+  userName: string;
 }
 
 export const HomePageCards = ({
@@ -22,10 +24,22 @@ export const HomePageCards = ({
   description,
   image,
   rating,
+  profilePic,
+  userName,
 }: HomePageCardsProps) => {
   return (
     <Card className="h-fit">
       <CardHeader>
+        <div>
+          <CldImage
+            width="70"
+            height="70"
+            src={profilePic}
+            alt="profile picture"
+            className="rounded-full"
+          />
+          <CardTitle>{userName}</CardTitle>
+        </div>
         <CardTitle>{title}</CardTitle>
         {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>

@@ -28,6 +28,8 @@ export default async function Home() {
           {drawings?.map((drawing) => (
             <HomePageCards
               key={drawing.id}
+              userName={drawing.user.name || "guest"}
+              profilePic={drawing.user.image || "profilepic"}
               title={drawing.title}
               description={drawing.description || ""}
               image={drawing.image}
