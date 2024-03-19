@@ -1,11 +1,11 @@
 import { Body } from "@/components/body";
-import { HomePageCards } from "@/components/homePageCards";
-import FilterComponent from "@/components/filters";
 import { getUserAge, getUserById } from "@/data/user";
 import { notFound } from "next/navigation";
 import { ProfilePic } from "@/components/profile-pic";
-import { isSameUser } from "@/actions/getuserinfo";
+import { getUserInfo, isSameUser } from "@/actions/getuserinfo";
 import { UploadProfilePic } from "@/components/upload/upload-profilePic";
+import { getUserRatings } from "@/data/rating";
+import { ProfileDoodles } from "@/components/doodles/profile-doodles";
 
 interface Params {
   userId: string;
@@ -19,6 +19,8 @@ export default async function Profile({ params }: { params: Params }) {
   const sameUser = await isSameUser(user.id);
   const userAge = getUserAge(user.birthDay);
   user.image = user.image || "profilepic";
+  const currentUser = await getUserInfo();
+  const ratings = await getUserRatings(currentUser?.id);
   console.log({ user });
   return (
     <Body showUser={true}>
@@ -35,36 +37,7 @@ export default async function Profile({ params }: { params: Params }) {
             {userAge && <p>{userAge} years old</p>}
             {sameUser && <UploadProfilePic />}
           </div>
-          <div className="flex justify-center">
-            <FilterComponent />
-          </div>
-          <div
-            className="relative 
-            grid 
-            min-h-screen 
-            grid-cols-1
-            gap-4
-            p-4
-            lg:grid-cols-2
-            "
-          >
-            {user.drawings?.map((drawing) => (
-              <HomePageCards
-                key={drawing.id}
-                userId={user.id}
-                userName={user.name || "guest"}
-                profilePic={user.image || "profilepic"}
-                title={drawing.title}
-                description={drawing.description || ""}
-                image={drawing.image}
-                rating={
-                  drawing.numRatings > 0
-                    ? drawing.sumRatings / drawing.numRatings
-                    : 0
-                }
-              />
-            ))}
-          </div>
+          <ProfileDoodles user={user} ratings={ratings} />
         </div>
       </div>
     </Body>

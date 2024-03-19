@@ -6,6 +6,9 @@ export async function getAllDrawings() {
       include: {
         user: true,
       },
+      orderBy: {
+        created_at: "desc",
+      },
     });
     return drawings;
   } catch (error) {
