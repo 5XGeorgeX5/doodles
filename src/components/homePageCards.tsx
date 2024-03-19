@@ -12,13 +12,15 @@ import { CldImage } from "next-cloudinary";
 import Link from "next/link";
 import ReactStars from "react-stars";
 import { addRating } from "@/actions/add-rating";
+import { useState, useEffect } from "react";
 
 interface HomePageCardsProps {
   id: string;
   title: string;
   description: string;
   image: string;
-  rating: number;
+  numRatings: number;
+  sumRatings: number;
   profilePic: string;
   userName: string;
   userId: string;
@@ -30,12 +32,28 @@ export const HomePageCards = ({
   title,
   description,
   image,
-  rating,
+  numRatings,
+  sumRatings,
   profilePic,
   userName,
   userId,
   userRating,
 }: HomePageCardsProps) => {
+  const [rating, setRating] = useState(
+    numRatings !== 0 ? sumRatings / numRatings : 0,
+  );
+  const [currentUserRating, setUserRating] = useState(userRating);
+  const updateRating = (newRating: number) => {
+    setUserRating(newRating);
+    if (userRating === 0) {
+      const updatedRating = (sumRatings + newRating) / (numRatings + 1);
+      setRating(updatedRating);
+    } else {
+      const updatedRating = (sumRatings + newRating - userRating) / numRatings;
+      setRating(updatedRating);
+    }
+    addRating(id, newRating);
+  };
   return (
     <Card className="h-fit">
       <CardHeader className="space-y-4">
@@ -52,7 +70,7 @@ export const HomePageCards = ({
               <h2 className="text-md font-bold">{userName}</h2>
             </div>
           </Link>
-          <p>Rating: {rating}</p>
+          <p>Rating: {Number.isInteger(rating) ? rating : rating.toFixed(1)}</p>
         </div>
 
         <CardTitle className="text-xl capitalize">{title}</CardTitle>
@@ -69,10 +87,9 @@ export const HomePageCards = ({
       </CardContent>
       <CardFooter>
         <ReactStars
-          count={5}
-          value={userRating}
+          value={currentUserRating}
           half={false}
-          onChange={(newRating) => addRating(id, newRating)}
+          onChange={updateRating}
           size={24}
           color2={"#ffd700"}
         />

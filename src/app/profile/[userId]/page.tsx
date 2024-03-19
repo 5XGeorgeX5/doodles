@@ -65,11 +65,8 @@ export default async function Profile({ params }: { params: Params }) {
                 title={drawing.title}
                 description={drawing.description || ""}
                 image={drawing.image}
-                rating={
-                  drawing.numRatings > 0
-                    ? drawing.sumRatings / drawing.numRatings
-                    : 0
-                }
+                numRatings={drawing.numRatings}
+                sumRatings={drawing.sumRatings}
               />
             ))}
           </div>
