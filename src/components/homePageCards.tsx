@@ -15,45 +15,43 @@ import { addRating } from "@/actions/add-rating";
 import { useState, useEffect } from "react";
 
 interface HomePageCardsProps {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  numRatings: number;
-  sumRatings: number;
-  profilePic: string;
-  userName: string;
-  userId: string;
   userRating: number;
+  drawing: any;
+  userId: string;
+  userName: string;
+  profilePic: string;
 }
 
 export const HomePageCards = ({
-  id,
-  title,
-  description,
-  image,
-  numRatings,
-  sumRatings,
-  profilePic,
-  userName,
-  userId,
   userRating,
+  drawing,
+  userId,
+  userName,
+  profilePic,
 }: HomePageCardsProps) => {
   const [rating, setRating] = useState(
-    numRatings !== 0 ? sumRatings / numRatings : 0,
+    drawing.numRatings !== 0 ? drawing.sumRatings / drawing.numRatings : 0,
   );
   const [currentUserRating, setUserRating] = useState(userRating);
   const updateRating = (newRating: number) => {
-    setUserRating(newRating);
     if (userRating === 0) {
-      const updatedRating = (sumRatings + newRating) / (numRatings + 1);
+      const updatedRating =
+        (drawing.sumRatings + newRating) / (drawing.numRatings + 1);
       setRating(updatedRating);
     } else {
-      const updatedRating = (sumRatings + newRating - userRating) / numRatings;
+      const updatedRating =
+        (drawing.sumRatings + newRating - userRating) / drawing.numRatings;
       setRating(updatedRating);
     }
-    addRating(id, newRating);
+    setUserRating(newRating);
+    addRating(drawing.id, newRating);
   };
+  useEffect(() => {
+    setRating(
+      drawing.numRatings !== 0 ? drawing.sumRatings / drawing.numRatings : 0,
+    );
+    setUserRating(userRating);
+  }, [drawing]);
   return (
     <Card className="h-fit">
       <CardHeader className="space-y-4">
@@ -73,14 +71,16 @@ export const HomePageCards = ({
           <p>Rating: {Number.isInteger(rating) ? rating : rating.toFixed(1)}</p>
         </div>
 
-        <CardTitle className="text-xl capitalize">{title}</CardTitle>
-        {description && <CardDescription>{description}</CardDescription>}
+        <CardTitle className="text-xl capitalize">{drawing.title}</CardTitle>
+        {drawing.description && (
+          <CardDescription>{drawing.description}</CardDescription>
+        )}
       </CardHeader>
       <CardContent>
         <CldImage
           width="600"
           height="400"
-          src={image}
+          src={drawing.image}
           alt="Doodle"
           className="w-full rounded-md"
         />

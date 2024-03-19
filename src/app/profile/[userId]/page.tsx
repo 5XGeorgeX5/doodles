@@ -1,12 +1,11 @@
 import { Body } from "@/components/body";
-import { HomePageCards } from "@/components/homePageCards";
-import FilterComponent from "@/components/filters";
 import { getUserAge, getUserById } from "@/data/user";
 import { notFound } from "next/navigation";
 import { ProfilePic } from "@/components/profile-pic";
 import { getUserInfo, isSameUser } from "@/actions/getuserinfo";
 import { UploadProfilePic } from "@/components/upload/upload-profilePic";
 import { getUserRatings } from "@/data/rating";
+import { ProfileDoodles } from "@/components/doodles/profile-doodles";
 
 interface Params {
   userId: string;
@@ -38,38 +37,7 @@ export default async function Profile({ params }: { params: Params }) {
             {userAge && <p>{userAge} years old</p>}
             {sameUser && <UploadProfilePic />}
           </div>
-          <div className="flex justify-center">
-            <FilterComponent />
-          </div>
-          <div
-            className="relative 
-            grid 
-            min-h-screen 
-            grid-cols-1
-            gap-4
-            p-4
-            lg:grid-cols-2
-            "
-          >
-            {user.drawings?.map((drawing) => (
-              <HomePageCards
-                key={drawing.id}
-                id={drawing.id}
-                userId={user.id}
-                userName={user.name || "guest"}
-                userRating={
-                  ratings?.find((rating) => rating.drawingId === drawing.id)
-                    ?.rating || 0
-                }
-                profilePic={user.image || "profilepic"}
-                title={drawing.title}
-                description={drawing.description || ""}
-                image={drawing.image}
-                numRatings={drawing.numRatings}
-                sumRatings={drawing.sumRatings}
-              />
-            ))}
-          </div>
+          <ProfileDoodles user={user} ratings={ratings} />
         </div>
       </div>
     </Body>
