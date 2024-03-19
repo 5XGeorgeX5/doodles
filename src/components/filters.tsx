@@ -20,7 +20,7 @@ export default function FilterComponent() {
   return (
     <nav className="flex flex-col items-center space-y-4">
       <h2 className="text-xl font-bold">Filters: </h2>
-      <RadioGroup defaultValue="trending" className="flex space-x-4">
+      <RadioGroup defaultValue="newest" className="flex space-x-4">
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="trending" id="trending" />
           <Label htmlFor="trending">Trending</Label>

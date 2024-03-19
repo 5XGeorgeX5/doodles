@@ -13,6 +13,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Rating {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String @db.ObjectId
+  drawingId String @db.ObjectId
+  rating    Int
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
 model Drawing {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   userId      String   @db.ObjectId
@@ -36,6 +44,7 @@ model User {
   birthDay      DateTime?
   accounts      Account[]
   drawings      Drawing[]
+  ratings       Rating[]
 }
 
 model Account {

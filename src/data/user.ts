@@ -17,7 +17,11 @@ export async function getUserById(id: string) {
     const user = await db.user.findUnique({
       where: { id },
       include: {
-        drawings: true,
+        drawings: {
+          orderBy: {
+            created_at: "desc",
+          },
+        },
       },
     });
     return user;

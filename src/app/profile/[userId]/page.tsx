@@ -4,8 +4,9 @@ import FilterComponent from "@/components/filters";
 import { getUserAge, getUserById } from "@/data/user";
 import { notFound } from "next/navigation";
 import { ProfilePic } from "@/components/profile-pic";
-import { isSameUser } from "@/actions/getuserinfo";
+import { getUserInfo, isSameUser } from "@/actions/getuserinfo";
 import { UploadProfilePic } from "@/components/upload/upload-profilePic";
+import { getUserRatings } from "@/data/rating";
 
 interface Params {
   userId: string;
@@ -19,6 +20,8 @@ export default async function Profile({ params }: { params: Params }) {
   const sameUser = await isSameUser(user.id);
   const userAge = getUserAge(user.birthDay);
   user.image = user.image || "profilepic";
+  const currentUser = await getUserInfo();
+  const ratings = await getUserRatings(currentUser?.id);
   console.log({ user });
   return (
     <Body showUser={true}>
@@ -51,8 +54,13 @@ export default async function Profile({ params }: { params: Params }) {
             {user.drawings?.map((drawing) => (
               <HomePageCards
                 key={drawing.id}
+                id={drawing.id}
                 userId={user.id}
                 userName={user.name || "guest"}
+                userRating={
+                  ratings?.find((rating) => rating.drawingId === drawing.id)
+                    ?.rating || 0
+                }
                 profilePic={user.image || "profilepic"}
                 title={drawing.title}
                 description={drawing.description || ""}

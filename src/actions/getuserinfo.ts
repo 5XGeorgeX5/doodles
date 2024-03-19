@@ -1,23 +1,9 @@
-"use server";
 import { auth } from "@/auth";
-import { db } from "@/lib/db";
 
 export const getUserInfo = async () => {
   const session = await auth();
-  try {
-    const user = await db.user.findUnique({
-      where: {
-        id: session?.user?.id,
-      },
-      select: {
-        id: true,
-        image: true,
-      },
-    });
-    return user;
-  } catch {
-    return null;
-  }
+  if (!session?.user) return null;
+  return session.user;
 };
 
 export const isSameUser = async (userId: string) => {

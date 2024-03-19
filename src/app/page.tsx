@@ -2,9 +2,13 @@ import { HomePageCards } from "@/components/homePageCards";
 import { Body } from "@/components/body";
 import FilterComponent from "@/components/filters";
 import { getAllDrawings } from "@/data/drawing";
+import { getUserInfo } from "@/actions/getuserinfo";
+import { getUserRatings } from "@/data/rating";
 
 export default async function Home() {
   const drawings = await getAllDrawings();
+  const user = await getUserInfo();
+  const ratings = await getUserRatings(user?.id);
   console.log(drawings);
   return (
     <Body showUser={true}>
@@ -28,6 +32,11 @@ export default async function Home() {
           {drawings?.map((drawing) => (
             <HomePageCards
               key={drawing.id}
+              id={drawing.id}
+              userRating={
+                ratings?.find((rating) => rating.drawingId === drawing.id)
+                  ?.rating || 0
+              }
               userName={drawing.user.name || "guest"}
               userId={drawing.user.id}
               profilePic={drawing.user.image || "profilepic"}
