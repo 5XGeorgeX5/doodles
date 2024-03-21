@@ -29,11 +29,13 @@ export const HomePageCards = ({
   userName,
   profilePic,
 }: HomePageCardsProps) => {
+  let userNewRating = userRating;
   const [rating, setRating] = useState(
     drawing.numRatings !== 0 ? drawing.sumRatings / drawing.numRatings : 0,
   );
   const [currentUserRating, setUserRating] = useState(userRating);
   const updateRating = (newRating: number) => {
+    userNewRating = newRating;
     if (userRating === 0) {
       const updatedRating =
         (drawing.sumRatings + newRating) / (drawing.numRatings + 1);
@@ -47,10 +49,19 @@ export const HomePageCards = ({
     addRating(drawing.id, newRating);
   };
   useEffect(() => {
-    setRating(
-      drawing.numRatings !== 0 ? drawing.sumRatings / drawing.numRatings : 0,
-    );
-    setUserRating(userRating);
+    if (userNewRating > 0 && userRating === 0) {
+      setRating(
+        (drawing.sumRatings + userNewRating) / (drawing.numRatings + 1),
+      );
+    } else {
+      setRating(
+        drawing.numRatings !== 0
+          ? (drawing.sumRatings + userNewRating - userRating) /
+              drawing.numRatings
+          : 0,
+      );
+    }
+    setUserRating(userNewRating);
   }, [drawing]);
   return (
     <Card className="h-fit">
