@@ -13,6 +13,7 @@ import Link from "next/link";
 import ReactStars from "react-stars";
 import { addRating } from "@/actions/add-rating";
 import { useState, useEffect } from "react";
+import { ProfilePic } from "./profile-pic";
 
 interface HomePageCardsProps {
   userRating: number;
@@ -69,12 +70,10 @@ export const HomePageCards = ({
         <div className="flex justify-between">
           <Link href={`/profile/${userId}`}>
             <div className="flex w-fit items-center space-x-4">
-              <CldImage
-                width="50"
-                height="50"
-                src={profilePic}
-                alt="profile picture"
-                className="rounded-full"
+              <ProfilePic
+                profilePic={profilePic}
+                size="50"
+                className="h-[50px] w-[50px] rounded-full"
               />
               <h2 className="text-md font-bold">{userName}</h2>
             </div>
