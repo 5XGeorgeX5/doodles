@@ -51,6 +51,7 @@ export function ProfileDoodles({ user, ratings }: ProfileDoodlesProps) {
       >
         {sortedDrawings?.map((drawing: any) => (
           <HomePageCards
+            key={drawing.id}
             drawing={drawing}
             userRating={
               ratings?.find((rating: any) => rating.drawingId === drawing.id)
