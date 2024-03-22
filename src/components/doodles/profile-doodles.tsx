@@ -46,6 +46,7 @@ export function ProfileDoodles({
         flex
         w-full 
         flex-wrap
+        space-x-4
         items-start
         justify-between
         bg-orange-200
