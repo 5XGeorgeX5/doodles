@@ -65,7 +65,16 @@ export const HomePageCards = ({
     setUserRating(userNewRating);
   }, [drawing]);
   return (
-    <Card className="lg:w-[32%] h-fit m-auto md:w-[49%] w-full ml-auto">
+    <Card
+      className="mb-4
+     h-fit
+     w-full
+     last-of-type:ml-0 
+     last-of-type:mr-auto 
+     md:w-[49%] 
+     lg:w-[32%] lg:last-of-type:ml-[2%]
+     "
+    >
       <CardHeader className="space-y-4">
         <div className="flex justify-between">
           <Link href={`/profile/${userId}`}>

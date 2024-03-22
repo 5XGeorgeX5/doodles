@@ -32,19 +32,18 @@ export function HomeDoodles({ drawings, ratings }: HomeDoodlesProps) {
   }
 
   return (
-    <div className="mx-auto flex w-3/4 flex-col space-y-4">
+    <div className="mx-auto flex w-full flex-col space-y-4 sm:w-3/4">
       <div className="flex justify-center">
         <FilterComponent onFilterChange={sortDrawings} />
       </div>
       <div
-        className="relative 
+        className="relative
         flex
+        w-full 
+        flex-wrap items-start
         justify-between
-        space-y-4
-        min-h-screen 
         bg-orange-200
         p-4
-        flex-wrap
         "
       >
         {sortedDrawings?.map((drawing: any) => (

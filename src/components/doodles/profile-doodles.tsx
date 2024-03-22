@@ -37,15 +37,14 @@ export function ProfileDoodles({ user, ratings }: ProfileDoodlesProps) {
         <FilterComponent onFilterChange={sortDrawings} />
       </div>
       <div
-        className="relative 
-        grid 
-        min-h-screen 
-        grid-cols-1
-        gap-4
+        className="relative
+        flex
+        w-full 
+        flex-wrap
+        items-start
+        justify-between
         bg-orange-200
         p-4
-        md:grid-cols-2
-        2xl:grid-cols-3
         "
       >
         {sortedDrawings?.map((drawing: any) => (
