@@ -40,6 +40,7 @@ export function HomeDoodles({ drawings, ratings }: HomeDoodlesProps) {
         className="relative
         flex
         w-full 
+        space-x-4
         flex-wrap items-start
         justify-between
         bg-orange-200
