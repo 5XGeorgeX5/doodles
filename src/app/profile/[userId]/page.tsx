@@ -37,7 +37,11 @@ export default async function Profile({ params }: { params: Params }) {
             {userAge && <p>{userAge} years old</p>}
             {sameUser && <UploadProfilePic />}
           </div>
-          <ProfileDoodles user={user} ratings={ratings} />
+          <ProfileDoodles
+            user={user}
+            ratings={ratings}
+            deleteOption={sameUser}
+          />
         </div>
       </div>
     </Body>

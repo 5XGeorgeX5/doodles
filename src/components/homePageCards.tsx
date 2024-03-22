@@ -14,6 +14,8 @@ import ReactStars from "react-stars";
 import { addRating } from "@/actions/add-rating";
 import { useState, useEffect } from "react";
 import { ProfilePic } from "./profile-pic";
+import { Button } from "./ui/button";
+import { deleteDoodle } from "@/actions/delete-doodle";
 
 interface HomePageCardsProps {
   userRating: number;
@@ -21,6 +23,7 @@ interface HomePageCardsProps {
   userId: string;
   userName: string;
   profilePic: string;
+  deleteOption?: boolean;
 }
 
 export const HomePageCards = ({
@@ -29,6 +32,7 @@ export const HomePageCards = ({
   userId,
   userName,
   profilePic,
+  deleteOption = false,
 }: HomePageCardsProps) => {
   let userNewRating = userRating;
   const [rating, setRating] = useState(
@@ -104,7 +108,7 @@ export const HomePageCards = ({
           className="w-full rounded-md"
         />
       </CardContent>
-      <CardFooter>
+      <CardFooter className="flex justify-between">
         <ReactStars
           value={currentUserRating}
           half={false}
@@ -112,6 +116,17 @@ export const HomePageCards = ({
           size={24}
           color2={"#ffd700"}
         />
+        {deleteOption && (
+          <Button
+            onClick={() => {
+              deleteDoodle(drawing.id);
+              window.location.reload();
+            }}
+            className="bg-red-700"
+          >
+            Delete
+          </Button>
+        )}
       </CardFooter>
     </Card>
   );
