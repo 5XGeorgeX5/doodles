@@ -66,15 +66,15 @@ export const UploadForm = () => {
             to-blue-800
             bg-clip-text
             text-center
-            text-lg
+            text-4xl
             text-transparent
-            sm:text-6xl
+            md:text-6xl
             ${caveat.className}`}
         >
           Keep on Doodling
         </h3>
       </div>
-      <div className="mx-auto mt-8 w-3/4 sm:w-1/2 lg:w-1/4">
+      <div className="mx-auto mt-8 w-3/4 sm:w-1/2 lg:w-1/3 xl:w-1/4">
         <Card className="py-4 shadow-md">
           <CardContent>
             <Form {...form}>

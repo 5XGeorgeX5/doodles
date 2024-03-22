@@ -7,7 +7,16 @@ export default function AuthLayout({
 }>) {
   return (
     <Body showUser={false}>
-      <div className="flex h-full items-center justify-center">{children}</div>
+      <div
+        className="
+        my-6 
+        flex
+        items-center
+        justify-center
+        "
+      >
+        {children}
+      </div>
     </Body>
   );
 }
