@@ -50,7 +50,7 @@ export const UploadForm = () => {
     });
   }
   return (
-    <div className="mx-auto mt-8 w-1/4">
+    <div className="mx-auto mt-8 w-3/4 sm:w-1/2 lg:w-1/4">
       <Card className="py-4 shadow-md">
         <CardContent>
           <Form {...form}>
