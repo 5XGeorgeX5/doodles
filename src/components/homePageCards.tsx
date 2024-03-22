@@ -70,13 +70,8 @@ export const HomePageCards = ({
   }, [drawing]);
   return (
     <Card
-      className="mb-4
+      className="
      h-fit
-     w-full
-     last-of-type:ml-0 
-     last-of-type:mr-auto 
-     md:w-[49%] 
-     lg:w-[32%] lg:last-of-type:ml-[2%]
      "
     >
       <CardHeader className="space-y-4">
@@ -119,8 +114,9 @@ export const HomePageCards = ({
         {deleteOption && (
           <Button
             onClick={() => {
-              deleteDoodle(drawing.id);
-              window.location.reload();
+              deleteDoodle(drawing.id).then(() => {
+                window.location.reload();
+              });
             }}
             className="bg-red-700"
           >

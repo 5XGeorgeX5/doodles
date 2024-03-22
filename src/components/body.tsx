@@ -3,6 +3,7 @@ import { Caveat_Brush } from "next/font/google";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import ImgDropDown from "@/components/ImgDropDown";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const caveat = Caveat_Brush({
   subsets: ["latin"],
@@ -72,6 +73,7 @@ export const Body = ({ children, showUser }: BodyProps) => {
       >
         {children}
       </main>
+      <SpeedInsights />
     </body>
   );
 };
