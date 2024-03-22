@@ -52,6 +52,7 @@ export const Body = ({ children, showUser }: BodyProps) => {
             Doodles
           </h1>
         </Link>
+
         {showUser && <ImgDropDown />}
       </header>
       <main
