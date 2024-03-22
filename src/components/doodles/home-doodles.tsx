@@ -38,15 +38,13 @@ export function HomeDoodles({ drawings, ratings }: HomeDoodlesProps) {
       </div>
       <div
         className="relative 
-        grid 
+        flex
+        justify-between
+        space-y-4
         min-h-screen 
-
-        grid-cols-1
-        gap-4
         bg-orange-200
         p-4
-        md:grid-cols-2
-        2xl:grid-cols-3
+        flex-wrap
         "
       >
         {sortedDrawings?.map((drawing: any) => (
