@@ -137,9 +137,15 @@ export const UploadForm = () => {
                             <CldUploadWidget
                               {...field}
                               options={{
-                                sources: ["local", "camera"],
+                                sources: ["local"],
                                 multiple: false,
                                 singleUploadAutoClose: false,
+                                clientAllowedFormats: [
+                                  "webp",
+                                  "jpeg",
+                                  "jpg",
+                                  "png",
+                                ],
                               }}
                               uploadPreset="doodles"
                               onSuccess={(results) => {

@@ -9,9 +9,10 @@ export const UploadProfilePic = () => {
     <div className="flex justify-center">
       <CldUploadWidget
         options={{
-          sources: ["local", "camera"],
+          sources: ["local"],
           multiple: false,
           singleUploadAutoClose: false,
+          clientAllowedFormats: ["webp", "jpeg", "jpg", "png"],
         }}
         uploadPreset="next_cloudinary_app"
         onSuccess={(results) => {

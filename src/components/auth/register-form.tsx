@@ -81,13 +81,15 @@ export const RegisterForm = () => {
                       placeholder="birth day"
                       type="date"
                       value={
-                        field.value
+                        field.value instanceof Date &&
+                        !isNaN(field.value.getTime())
                           ? field.value.toISOString().slice(0, 10)
                           : ""
                       }
-                      onChange={(event) =>
-                        field.onChange(new Date(event.target.value))
-                      }
+                      onChange={(event) => {
+                        console.log(event.target.value);
+                        field.onChange(new Date(event.target.value));
+                      }}
                     />
                   </FormControl>
                   <FormMessage />
