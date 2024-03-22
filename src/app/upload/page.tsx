@@ -4,7 +4,7 @@ import { UploadForm } from "@/components/upload/upload-form";
 export default function Upload() {
   return (
     <Body showUser={true}>
-      <UploadForm></UploadForm>
+      <UploadForm/>
     </Body>
   );
 }

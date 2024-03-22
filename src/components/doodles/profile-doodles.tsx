@@ -32,7 +32,7 @@ export function ProfileDoodles({ user, ratings }: ProfileDoodlesProps) {
   }
 
   return (
-    <div>
+    <div className="space-y-4">
       <div className="flex justify-center">
         <FilterComponent onFilterChange={sortDrawings} />
       </div>
@@ -40,7 +40,6 @@ export function ProfileDoodles({ user, ratings }: ProfileDoodlesProps) {
         className="relative 
         grid 
         min-h-screen 
-
         grid-cols-1
         gap-4
         bg-orange-200
