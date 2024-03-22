@@ -6,9 +6,14 @@ import { useState } from "react";
 interface ProfileDoodlesProps {
   user: any;
   ratings: any;
+  deleteOption: boolean;
 }
 
-export function ProfileDoodles({ user, ratings }: ProfileDoodlesProps) {
+export function ProfileDoodles({
+  user,
+  ratings,
+  deleteOption,
+}: ProfileDoodlesProps) {
   const [sortedDrawings, setSortedDrawings] = useState(user.drawings || null);
   function sortDrawings(filter: "trending" | "newest") {
     if (!user.drawings) return null;
@@ -58,6 +63,7 @@ export function ProfileDoodles({ user, ratings }: ProfileDoodlesProps) {
             userId={user.id}
             userName={user.name || "guest"}
             profilePic={user.image || "profilepic"}
+            deleteOption={deleteOption}
           />
         ))}
       </div>

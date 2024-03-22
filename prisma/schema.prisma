@@ -14,11 +14,12 @@ datasource db {
 }
 
 model Rating {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
-  userId    String @db.ObjectId
-  drawingId String @db.ObjectId
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String  @db.ObjectId
+  drawingId String  @db.ObjectId
   rating    Int
-  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  drawing   Drawing @relation(fields: [drawingId], references: [id], onDelete: Cascade)
 }
 
 model Drawing {
@@ -30,6 +31,7 @@ model Drawing {
   numRatings  Int      @default(0)
   sumRatings  Int      @default(0)
   created_at  DateTime @default(now())
+  ratings     Rating[]
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
