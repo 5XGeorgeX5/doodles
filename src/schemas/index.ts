@@ -30,3 +30,12 @@ export const UploadSchema = z.object({
     .string()
     .min(1, { message: "you must upload an image to create the doodle" }),
 });
+
+export const EditSchema = z.object({
+  name: z.string().optional(),
+  birthDay: z
+    .date()
+    .max(maxDate, { message: "user can't be younger than 3 years" })
+    .min(minDate, { message: "please enter a valid date" })
+    .optional(),
+});

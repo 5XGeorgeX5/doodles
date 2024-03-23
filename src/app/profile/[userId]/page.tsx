@@ -6,6 +6,8 @@ import { getUserInfo, isSameUser } from "@/actions/getuserinfo";
 import { UploadProfilePic } from "@/components/upload/upload-profilePic";
 import { getUserRatings } from "@/data/rating";
 import { ProfileDoodles } from "@/components/doodles/profile-doodles";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface Params {
   userId: string;
@@ -21,7 +23,6 @@ export default async function Profile({ params }: { params: Params }) {
   user.image = user.image || "profilepic";
   const currentUser = await getUserInfo();
   const ratings = await getUserRatings(currentUser?.id);
-  console.log({ user });
   return (
     <Body showUser={true}>
       <div className="mx-auto flex space-x-8 sm:w-3/4">
@@ -35,7 +36,19 @@ export default async function Profile({ params }: { params: Params }) {
             />
             <h2>{user.name}</h2>
             {userAge && <p>{userAge} years old</p>}
-            {sameUser && <UploadProfilePic />}
+            {/* {sameUser && <UploadProfilePic />} */}
+            {sameUser && (
+              <Link href={`./${user.id}/settings`}>
+                <Button
+                  className="bg-orange-500
+            text-yellow-100
+            hover:bg-orange-400 
+            focus:bg-orange-800"
+                >
+                  Edit info
+                </Button>
+              </Link>
+            )}
           </div>
           <ProfileDoodles
             user={user}
