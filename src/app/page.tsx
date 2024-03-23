@@ -10,7 +10,6 @@ export default async function Home() {
   const drawings = await getAllDrawings();
   const user = await getUserInfo();
   const ratings = await getUserRatings(user?.id);
-  console.log(drawings);
   return (
     <Body showUser={true}>
       <HomeDoodles drawings={drawings} ratings={ratings} />

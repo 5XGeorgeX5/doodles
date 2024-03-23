@@ -114,7 +114,7 @@ export const HomePageCards = ({
         {deleteOption && (
           <Button
             onClick={() => {
-              deleteDoodle(drawing.id).then(() => {
+              deleteDoodle(drawing.image, drawing.id).then(() => {
                 window.location.reload();
               });
             }}

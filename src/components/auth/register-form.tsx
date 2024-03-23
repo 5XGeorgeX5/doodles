@@ -87,7 +87,6 @@ export const RegisterForm = () => {
                           : ""
                       }
                       onChange={(event) => {
-                        console.log(event.target.value);
                         field.onChange(new Date(event.target.value));
                       }}
                     />

@@ -85,6 +85,7 @@ export function ProfileDoodles({
                   userId={user.id}
                   userName={user.name || "guest"}
                   profilePic={user.image || "profilepic"}
+                  deleteOption={deleteOption}
                 />
               );
             })}
