@@ -1,7 +1,7 @@
 "use client";
 import { FilterComponent } from "../filters";
 import { HomePageCards } from "../homePageCards";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface ProfileDoodlesProps {
   user: any;
@@ -15,6 +15,22 @@ export function ProfileDoodles({
   deleteOption,
 }: ProfileDoodlesProps) {
   const [sortedDrawings, setSortedDrawings] = useState(user.drawings || null);
+  const [numDivs, setNumDivs] = useState(1);
+  useEffect(() => {
+    const updateNumDivs = () => {
+      const width = window.innerWidth;
+      if (width >= 1280) {
+        setNumDivs(3);
+      } else if (width >= 768) {
+        setNumDivs(2);
+      } else {
+        setNumDivs(1);
+      }
+    };
+    updateNumDivs();
+    window.addEventListener("resize", updateNumDivs);
+    return () => window.removeEventListener("resize", updateNumDivs);
+  }, []);
   function sortDrawings(filter: "trending" | "newest") {
     if (!user.drawings) return null;
     let newDrawings = [...user.drawings];
@@ -53,19 +69,26 @@ export function ProfileDoodles({
         xl:grid-cols-3
         "
       >
-        {sortedDrawings?.map((drawing: any) => (
-          <HomePageCards
-            key={drawing.id}
-            drawing={drawing}
-            userRating={
-              ratings?.find((rating: any) => rating.drawingId === drawing.id)
-                ?.rating || 0
-            }
-            userId={user.id}
-            userName={user.name || "guest"}
-            profilePic={user.image || "profilepic"}
-            deleteOption={deleteOption}
-          />
+        {[...Array(numDivs)].map((_, index) => (
+          <div key={index} className="space-y-4">
+            {sortedDrawings.map((drawing: any, i: number) => {
+              if (i % numDivs !== index) return null;
+              return (
+                <HomePageCards
+                  key={drawing.id}
+                  drawing={drawing}
+                  userRating={
+                    ratings?.find(
+                      (rating: any) => rating.drawingId === drawing.id,
+                    )?.rating || 0
+                  }
+                  userId={user.id}
+                  userName={user.name || "guest"}
+                  profilePic={user.image || "profilepic"}
+                />
+              );
+            })}
+          </div>
         ))}
       </div>
     </div>

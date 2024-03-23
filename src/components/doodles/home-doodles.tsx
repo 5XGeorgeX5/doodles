@@ -1,7 +1,7 @@
 "use client";
 import { FilterComponent } from "../filters";
 import { HomePageCards } from "../homePageCards";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface HomeDoodlesProps {
   drawings: any;
@@ -10,6 +10,22 @@ interface HomeDoodlesProps {
 
 export function HomeDoodles({ drawings, ratings }: HomeDoodlesProps) {
   const [sortedDrawings, setSortedDrawings] = useState(drawings);
+  const [numDivs, setNumDivs] = useState(1);
+  useEffect(() => {
+    const updateNumDivs = () => {
+      const width = window.innerWidth;
+      if (width >= 1280) {
+        setNumDivs(3);
+      } else if (width >= 768) {
+        setNumDivs(2);
+      } else {
+        setNumDivs(1);
+      }
+    };
+    updateNumDivs();
+    window.addEventListener("resize", updateNumDivs);
+    return () => window.removeEventListener("resize", updateNumDivs);
+  }, []);
   function sortDrawings(filter: "trending" | "newest") {
     if (!drawings) return null;
     let newDrawings = [...drawings];
@@ -30,7 +46,6 @@ export function HomeDoodles({ drawings, ratings }: HomeDoodlesProps) {
     }
     setSortedDrawings(newDrawings);
   }
-
   return (
     <div className="mx-auto flex w-full flex-col space-y-4 sm:w-3/4">
       <div className="flex justify-center">
@@ -48,18 +63,26 @@ export function HomeDoodles({ drawings, ratings }: HomeDoodlesProps) {
         xl:grid-cols-3
         "
       >
-        {sortedDrawings?.map((drawing: any) => (
-          <HomePageCards
-            key={drawing.id}
-            drawing={drawing}
-            userRating={
-              ratings?.find((rating: any) => rating.drawingId === drawing.id)
-                ?.rating || 0
-            }
-            userId={drawing.user.id}
-            userName={drawing.user.name || "guest"}
-            profilePic={drawing.user.image || "profilepic"}
-          />
+        {[...Array(numDivs)].map((_, index) => (
+          <div key={index} className="space-y-4">
+            {sortedDrawings.map((drawing: any, i: number) => {
+              if (i % numDivs !== index) return null;
+              return (
+                <HomePageCards
+                  key={drawing.id}
+                  drawing={drawing}
+                  userRating={
+                    ratings?.find(
+                      (rating: any) => rating.drawingId === drawing.id,
+                    )?.rating || 0
+                  }
+                  userId={drawing.user.id}
+                  userName={drawing.user.name || "guest"}
+                  profilePic={drawing.user.image || "profilepic"}
+                />
+              );
+            })}
+          </div>
         ))}
       </div>
     </div>
