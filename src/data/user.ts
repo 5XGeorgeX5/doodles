@@ -1,5 +1,4 @@
 import { db } from "@/lib/db";
-import { Rethink_Sans } from "next/font/google";
 
 export async function getUserByEmail(email: string) {
   try {

@@ -1,4 +1,3 @@
-// "use client"
 import { Caveat_Brush } from "next/font/google";
 import { Inter } from "next/font/google";
 import Link from "next/link";
@@ -19,7 +18,6 @@ interface BodyProps {
 }
 
 export const Body = ({ children, showUser }: BodyProps) => {
-  const handleNewDoodle = () => {};
   return (
     <body
       className={`${inter.className} 

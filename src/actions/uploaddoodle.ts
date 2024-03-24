@@ -3,7 +3,6 @@ import * as z from "zod";
 import { UploadSchema } from "@/schemas";
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
-import { error } from "console";
 
 export const uploadDoodle = async (values: z.infer<typeof UploadSchema>) => {
   const validatedFields = UploadSchema.safeParse(values);

@@ -168,7 +168,7 @@ export const UploadForm = () => {
                               text-yellow-100
                               hover:bg-orange-400 focus:bg-orange-800"
                                   >
-                                    Uplaod new doodle
+                                    Upload new doodle
                                   </Button>
                                 );
                               }}
