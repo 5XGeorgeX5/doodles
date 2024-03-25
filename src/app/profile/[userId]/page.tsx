@@ -3,7 +3,6 @@ import { getUserAge, getUserById } from "@/data/user";
 import { notFound } from "next/navigation";
 import { ProfilePic } from "@/components/profile-pic";
 import { getUserInfo, isSameUser } from "@/actions/getuserinfo";
-import { UploadProfilePic } from "@/components/upload/upload-profilePic";
 import { getUserRatings } from "@/data/rating";
 import { ProfileDoodles } from "@/components/doodles/profile-doodles";
 import { Button } from "@/components/ui/button";
@@ -28,15 +27,14 @@ export default async function Profile({ params }: { params: Params }) {
       <div className="mx-auto flex space-x-8 sm:w-3/4">
         <div className="mx-auto flex w-full flex-col space-y-4">
           <div className="flex flex-col items-center space-y-4">
-            <h1 className="text-2xl font-semibold">Profile</h1>
+            <h1 className="text-2xl font-bold">{ user.name} Profile</h1>
             <ProfilePic
               profilePic={user.image}
               size="96"
               className="h-24 w-24 rounded-full sm:h-36 sm:w-36"
             />
-            <h2>{user.name}</h2>
+            <h2 className="text-2xl font-semibold">{user.name}</h2>
             {userAge && <p>{userAge} years old</p>}
-            {/* {sameUser && <UploadProfilePic />} */}
             {sameUser && (
               <Link href={`./${user.id}/settings`}>
                 <Button

@@ -1,9 +1,7 @@
 import { Body } from "@/components/body";
 import { getUserById } from "@/data/user";
 import { notFound } from "next/navigation";
-import { ProfilePic } from "@/components/profile-pic";
 import { isSameUser } from "@/actions/getuserinfo";
-import { UploadProfilePic } from "@/components/upload/upload-profilePic";
 import EditFrom from "@/components/edit-form";
 
 interface Params {
